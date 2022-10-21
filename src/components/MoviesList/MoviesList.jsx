@@ -5,7 +5,7 @@ import css from './MoviesList.module.css';
 
 export const MoviesList = ({ movies }) => {
   const location = useLocation();
-  const currentLocation = location.pathname === '/movies' ? '' : '/movies/';
+  const currentLocation = location.pathname.includes('movies') ? '' : '/movies/';
 
   return movies?.length > 0 ? (
     <ul className={css.MoviesList}>
