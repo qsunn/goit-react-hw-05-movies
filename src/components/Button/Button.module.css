@@ -1,0 +1,12 @@
+.Button {
+    padding: 2px;
+    border-radius: 2px;
+    border: 1px solid #000;
+    background-color: #f2f2f2;
+    color: #000;
+    cursor: pointer;
+}
+
+.Button:hover {
+    background-color: #ddd;
+}

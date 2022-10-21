@@ -1,0 +1,11 @@
+.ReviewCard {
+    margin-bottom: 16px;
+}
+
+.ReviewCard h4 {
+    margin-bottom: 8px;
+}
+
+.ReviewCard p {
+    font-size: 14px;
+}

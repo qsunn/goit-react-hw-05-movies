@@ -1,0 +1,14 @@
+.Navigation {
+    padding: 16px;
+    border-bottom: 1px solid #000;
+}
+
+.Navigation ul {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.active {
+    color: red;
+}

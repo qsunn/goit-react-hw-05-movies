@@ -1,0 +1,17 @@
+.MovieCard {
+    display: flex;
+    gap: 16px;
+}
+
+.MovieCard img {
+    width: 240px;
+    height: 320px;
+    object-fit: cover;
+}
+
+.MovieCard .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
