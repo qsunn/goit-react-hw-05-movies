@@ -31,10 +31,14 @@ export const MovieDetailsPage = () => {
           <h3>Additional Information</h3>
           <ul>
             <li>
-              <Link state={{ from: location?.state?.from }} to="cast">Cast</Link>
+              <Link state={location.state} to="cast">
+                Cast
+              </Link>
             </li>
             <li>
-              <Link state={{ from: location?.state?.from }} to="reviews">Reviews</Link>
+              <Link state={location.state} to="reviews">
+                Reviews
+              </Link>
             </li>
           </ul>
         </div>
