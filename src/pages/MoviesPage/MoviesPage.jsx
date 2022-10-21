@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useFetchMoviesByQuery } from 'hooks/useFetchMoviesByQuery';
 
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 
 export const MoviesPage = () => {
-  const [query, setQuery] = useState('');
-  const movies = useFetchMoviesByQuery(query);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get('query');
+  const movies = useFetchMoviesByQuery(search);
 
   const submitHandler = query => {
-    setQuery(query);
+    setSearchParams({ query: query });
   };
 
   return (
