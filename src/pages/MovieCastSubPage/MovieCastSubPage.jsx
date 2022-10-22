@@ -5,5 +5,5 @@ import { CastList } from 'components/CastList/CastList';
 export const MovieCastSubPage = () => {
   const { movieId } = useParams();
   const credits = useFetchMovieCast(movieId);
-  return credits && <CastList cast={credits.cast} />;
+  return credits && <CastList items={credits.cast} />;
 };

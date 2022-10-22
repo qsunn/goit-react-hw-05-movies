@@ -16,7 +16,7 @@ export const MoviesPage = () => {
   return (
     <div className="container">
       <SearchForm submitHandler={submitHandler} />
-      {movies && <MoviesList movies={movies} />}
+      {movies && <MoviesList items={movies} />}
     </div>
   );
 };

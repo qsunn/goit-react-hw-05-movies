@@ -5,29 +5,38 @@ const imgBaseUrl = 'https://image.tmdb.org/t/p/w500';
 const noImage =
   'https://upload.wikimedia.org/wikipedia/commons/4/46/Question_mark_%28black%29.svg';
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ item }) => {
+  const {
+    backdrop_path,
+    title,
+    name,
+    release_date,
+    vote_average,
+    overview,
+    genres,
+  } = item;
   return (
     <div className={css.MovieCard}>
       <img
-        src={movie.backdrop_path ? imgBaseUrl + movie.backdrop_path : noImage}
+        src={backdrop_path ? imgBaseUrl + backdrop_path : noImage}
         alt="poster"
       />
       <div className={css.info}>
         <h2>
-          {movie.title ?? movie.name} ({movie.release_date.split('-')[0]})
+          {title ?? name} ({release_date.split('-')[0]})
         </h2>
-        <p>User score: {Math.round(movie.vote_average * 10)}%</p>
+        <p>User score: {Math.round(vote_average * 10)}%</p>
         <h3>Overview</h3>
-        <p>{movie.overview}</p>
+        <p>{overview}</p>
         <h3>Genres</h3>
-        <p>{movie?.genres.map(genre => `${genre.name} `)}</p>
+        <p>{genres.map(genre => `${genre.name} `)}</p>
       </div>
     </div>
   );
 };
 
 MovieCard.propTypes = {
-  movie: PropTypes.shape({
+  item: PropTypes.shape({
     backdrop_path: PropTypes.string,
     title: PropTypes.string,
     name: PropTypes.string,

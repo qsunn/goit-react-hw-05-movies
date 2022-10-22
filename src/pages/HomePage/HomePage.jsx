@@ -7,7 +7,7 @@ export const HomePage = () => {
   return (
     <div className="container">
       <h1>Trending today</h1>
-      {movies && <MoviesList movies={movies} />}
+      {movies && <MoviesList items={movies} />}
     </div>
   );
 };

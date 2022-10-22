@@ -2,22 +2,21 @@ import { PropTypes } from 'prop-types';
 import { ReviewCard } from 'components/ReviewCard/ReviewCard';
 import { Notification } from 'components/Notification/Notification';
 
-export const ReviewsList = ({ reviews }) => {
-  return reviews?.length > 0 ? (
+export const ReviewsList = ({ items }) => {
+  if (!items || !items.length) return <Notification message="No reviews" />;
+  return (
     <ul>
-      {reviews.map(review => (
-        <ReviewCard key={review.id} review={review} />
+      {items.map(item => (
+        <ReviewCard key={item.id} item={item} />
       ))}
     </ul>
-  ) : (
-    <Notification message="No reviews" />
   );
 };
 
 ReviewsList.propTypes = {
-  reviews: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
     })
   ).isRequired,
 };

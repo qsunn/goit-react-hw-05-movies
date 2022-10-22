@@ -5,5 +5,5 @@ import { ReviewsList } from 'components/ReviewsList/ReviewsList';
 export const MovieReviewsSubPage = () => {
   const { movieId } = useParams();
   const reviews = useFetchMovieReviews(movieId);
-  return reviews && <ReviewsList reviews={reviews.results} />;
+  return reviews && <ReviewsList items={reviews.results} message='No reviews' />;
 };

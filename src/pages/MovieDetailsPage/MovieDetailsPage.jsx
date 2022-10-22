@@ -1,15 +1,11 @@
-import {
-  useLocation,
-  useNavigate,
-  useParams,
-  Outlet,
-  Link,
-} from 'react-router-dom';
+import { useLocation, useNavigate, useParams, Outlet } from 'react-router-dom';
 
 import { useFetchMovieById } from 'hooks/useFetchMovieById';
 
 import { Button } from 'components/Button/Button';
 import { MovieCard } from 'components/MovieCard/MovieCard';
+import { Notification } from 'components/Notification/Notification';
+import { AdditionalNavigation } from 'components/AdditionalNavigation/AdditionalNavigation';
 
 export const MovieDetailsPage = () => {
   const navigateTo = useNavigate();
@@ -17,35 +13,22 @@ export const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const movie = useFetchMovieById(movieId);
 
+  if (!movie) return <Notification message="Wrong movie" />;
   return (
-    movie && (
-      <div>
-        <div className="container">
-          <Button
-            title="Go Back"
-            onClick={() => navigateTo(location?.state?.from ?? '/')}
-          />
-          <MovieCard movie={movie} />
-        </div>
-        <div className="container">
-          <h3>Additional Information</h3>
-          <ul>
-            <li>
-              <Link state={location.state} to="cast">
-                Cast
-              </Link>
-            </li>
-            <li>
-              <Link state={location.state} to="reviews">
-                Reviews
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="container">
-          <Outlet />
-        </div>
+    <>
+      <div className="container">
+        <Button
+          title="Go Back"
+          onClick={() => navigateTo(location?.state?.from ?? '/')}
+        />
+        <MovieCard item={movie} />
       </div>
-    )
+      <div className="container">
+        <AdditionalNavigation location={location?.state} />
+      </div>
+      <div className="container">
+        <Outlet />
+      </div>
+    </>
   );
 };

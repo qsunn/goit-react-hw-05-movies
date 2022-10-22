@@ -1,24 +1,22 @@
 import { PropTypes } from 'prop-types';
-
 import { CastCard } from 'components/CastCard/CastCard';
 import { Notification } from 'components/Notification/Notification';
 
-export const CastList = ({ cast }) => {
-  return cast?.length > 0 ? (
+export const CastList = ({ items }) => {
+  if (!items || !items.length) return <Notification message="No cast info" />;
+  return (
     <ul>
-      {cast.map(actor => {
-        return <CastCard key={actor.credit_id} actor={actor} />;
-      })}
+      {items.map(item => (
+        <CastCard key={item.id} item={item} />
+      ))}
     </ul>
-  ) : (
-    <Notification message="No cast info" />
   );
 };
 
 CastList.propTypes = {
-  cast: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({
-      credit_id: PropTypes.string,
+      id: PropTypes.number,
     })
   ).isRequired,
 };
