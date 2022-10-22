@@ -4,7 +4,7 @@ import { useFetchMoviesByQuery } from 'hooks/useFetchMoviesByQuery';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { SearchForm } from 'components/SearchForm/SearchForm';
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
   const movies = useFetchMoviesByQuery(query);
@@ -20,3 +20,5 @@ export const MoviesPage = () => {
     </div>
   );
 };
+
+export default MoviesPage;

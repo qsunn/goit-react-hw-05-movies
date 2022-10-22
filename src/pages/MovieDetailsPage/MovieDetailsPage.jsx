@@ -7,7 +7,7 @@ import { MovieCard } from 'components/MovieCard/MovieCard';
 import { Notification } from 'components/Notification/Notification';
 import { AdditionalNavigation } from 'components/AdditionalNavigation/AdditionalNavigation';
 
-export const MovieDetailsPage = () => {
+const MovieDetailsPage = () => {
   const navigateTo = useNavigate();
   const location = useLocation();
   const { movieId } = useParams();
@@ -32,3 +32,5 @@ export const MovieDetailsPage = () => {
     </>
   );
 };
+
+export default MovieDetailsPage;
