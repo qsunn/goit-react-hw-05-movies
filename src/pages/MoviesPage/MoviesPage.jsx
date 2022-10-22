@@ -6,11 +6,11 @@ import { SearchForm } from 'components/SearchForm/SearchForm';
 
 export const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const search = searchParams.get('query');
-  const movies = useFetchMoviesByQuery(search);
+  const query = searchParams.get('query') ?? '';
+  const movies = useFetchMoviesByQuery(query);
 
   const submitHandler = query => {
-    setSearchParams({ query: query });
+    setSearchParams(query.trim() !== '' ? { query } : {});
   };
 
   return (
